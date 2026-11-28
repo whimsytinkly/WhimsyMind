@@ -1,0 +1,146 @@
+/* ================================ */
+/* Game Layout */
+/* ================================ */
+
+.game-container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.game-header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+}
+
+.game-content {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(180px, 1fr);
+    gap: var(--space-xl);
+    align-items: start;
+}
+
+.guess-history {
+    min-width: 0;
+}
+
+.game-controls {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+/* ================================ */
+/* Mobile Layout */
+/* ================================ */
+
+@media (max-width: 600px) {
+
+    .game-content {
+        grid-template-columns: 1fr;
+    }
+
+    .game-controls {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        background: var(--color-background);
+        padding: var(--space-md);
+        border-top: 1px solid var(--color-border);
+        padding-bottom: 120px;
+    }
+
+}
+
+/* ================================ */
+/* Guess History */
+/* ================================ */
+
+.guess-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.guess-row {
+    display: grid;
+    grid-template-columns: 24px 1fr 64px;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-sm) var(--space-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+}
+
+.guess-row.active {
+    border-color: var(--color-focus);
+    box-shadow: 0 0 12px color-mix(
+        in srgb,
+        var(--color-focus) 35%,
+        transparent
+    );
+}
+
+/* ================================ */
+/* Guess Pegs */
+/* ================================ */
+
+.guess-pegs,
+.feedback-pegs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+}
+
+.guess-peg {
+    width: 32px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 1px solid var(--color-border);
+    background: transparent;
+}
+
+.feedback-peg {
+    width: 10px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 1px solid var(--color-border);
+    background: transparent;
+}
+
+.guess-peg.selected {
+    border-color: var(--color-focus);
+    box-shadow: 0 0 12px color-mix(
+        in srgb,
+        var(--color-focus) 50%,
+        transparent
+    );
+}
+
+/* ================================ */
+/* Colour Picker */
+/* ================================ */
+
+.colour-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+}
+
+.colour-option {
+    width: 40px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 2px solid var(--color-border);
+    padding: 0;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.colour-option:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px currentColor;
+}
